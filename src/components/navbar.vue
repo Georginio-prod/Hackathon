@@ -1,11 +1,18 @@
 <template>
-    <div class="w-full flex justify-between items-center px-20 bg-slate-500 text-black py-5">
-        <!-- Section de droite : Autocomplete -->
-        <div class="w-full max-w-xs">
+    <div class="w-full flex justify-between items-center px-20 bg-black text-black py-5">
+        <div class="bg-navbg py-6 w-full flex justify-between items-center rounded-md">
+              <!-- Section de droite : Autocomplete -->
+        <div class="w-full max-w-xs pl-6">
             <div class="relative">
-                <input type="text" v-model="query" @input="filterItems" placeholder="Search..."
-                    class="w-full pl-2 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-3 top-2.5 h-5 w-5 text-gray-400"
+                <input 
+    type="text" 
+    v-model="query" 
+    @input="filterItems" 
+    placeholder="Search..." 
+    class="w-full pl-2 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-autoC text-white placeholder-white" 
+/>
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-3 top-2.5 h-5 w-5 text-white"
                     fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -20,7 +27,7 @@
             </ul>
         </div>
 
-        <div class="flex items-center space-x-8">
+        <div class="flex items-center space-x-8 pr-6">
             <button>
                 <img src="/public/Icons-2.png" alt="icon" class="flex justify-center items-center">
             </button>
@@ -36,8 +43,7 @@
                     </svg>
 
                     <!-- Petit point jaune pour indiquer une nouvelle notification   v-if="unreadCount > 0"-->
-                    <span 
-                        class="absolute top-0 right-0 mt-1 mr-1 block w-2 h-2 bg-yellow-500 rounded-full">
+                    <span class="absolute top-0 right-0 mt-1 mr-1 block w-2 h-2 bg-yellow-500 rounded-full">
                     </span>
 
                     <!-- Badge pour les notifications non lues -->
@@ -62,9 +68,11 @@
 
             <!-- Carré avec image changeable -->
             <div class="relative rounded-lg flex justify-center items-center">
-                <img src="/public/Frame 28.png" alt="Image" class="w-11 h-11 object-contain rounded-lg" />        
+                <img src="/public/Frame 28.png" alt="Image" class="w-11 h-11 object-contain rounded-lg" />
             </div>
+        </div> 
         </div>
+      
 
 
     </div>
@@ -121,3 +129,11 @@ export default {
     },
 };
 </script>
+
+<style>
+input::placeholder {
+    color: white;
+    opacity: 75%;
+}
+
+</style>
