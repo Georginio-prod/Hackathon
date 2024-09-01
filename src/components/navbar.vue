@@ -40,6 +40,19 @@
                         <!-- Petit point jaune pour indiquer une nouvelle notification   v-if="unreadCount > 0"-->
                         <span class="absolute top-0 right-0 mt-1 mr-1 block w-2 h-2 bg-yellow-500 rounded-full">
                         </span>
+                        <span className="absolute top-0 right-0 inline-block w-4 h-4 bg-red-500 text-white text-xs font-bold rounded-full -mt-2 -mr-2">
+                                        <!-- {unreadCount} -->
+                                    </span>
+                                    <div v-if="showNotifications" class="absolute right-0 mt-2 w-64 bg-white border rounded-lg shadow-lg overflow-hidden">
+    <div v-if="notifications.length > 0">
+      <div v-for="(notification, index) in notifications" :key="index" class="p-4 border-b last:border-b-0">
+        {{ notification.message }}
+      </div>
+    </div>
+    <div v-else class="p-4 text-center text-gray-500">
+      No new notifications
+    </div>
+  </div>
 
                         <!-- Badge pour les notifications non lues -->
                         <span v-if="unreadCount > 0"
@@ -77,6 +90,8 @@
 export default {
     data() {
         return {
+            showNotifications: false, // Assurez-vous de lier cela à votre logique
+            notifications: [],
             query: "",
             filteredItems: [],
             unreadCount: 0, // Nombre de notifications non lues
